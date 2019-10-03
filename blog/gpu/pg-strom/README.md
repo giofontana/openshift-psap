@@ -9,7 +9,7 @@ git clone https://github.com/giofontana/openshift-psap.git
 yum -y install buildah skopeo podman
 ```
 
-# Preparar Postgresql
+## Preparar Postgresql
 ```
 yum -y install libhugetlbfs-utils
 hugeadm --create-global-mounts
@@ -18,16 +18,21 @@ tuned-adm profile pgstrom
 reboot
 ```
 
-# Criar projeto e efetuar deploy do PG-Strom
+## Criar projeto para o PG-Strom
 ```
 oc new-project nvidia
 oc create -f openshift-psap/playbooks/roles/nvidia-device-plugin/files/nvidia-device-plugin-scc.yaml
 oc label node <your-gpu-node> openshift.com/gpu-accelerator=true
+```
 
-# Preparar hostpath
+## Preparar hostpath
+```
 mkdir -p /opt/psql-data
 chmod 777 /opt/psql-data
+```
 
+## Efetuar o deploy do PG-Strom
+```
 oc create -f openshift-psap/blog/gpu/pg-strom/pgstrom.yml
 oc rsh pgstrom /bin/bash
 vi /var/lib/pgsql/data/userdata/postgresql.conf 

@@ -45,5 +45,6 @@ spec:
       emptyDir:
         medium: Memory
     - name: pvol
-      persistentVolumeClaim:
-        claimName: "claim1" 
+      hostPath:
+        path: "/opt/psql-data" 
+        type: Directory

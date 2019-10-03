@@ -1,10 +1,10 @@
-== GPU Accelerated SQL queries with PostgreSQL & PG-Strom in OpenShift-3.10 
+# GPU Accelerated SQL queries with PostgreSQL & PG-Strom in OpenShift-3.10 
 Fonte: https://blog.openshift.com/gpu-accelerated-sql-queries-with-postgresql-pg-strom-in-openshift-3-10/
 
 
 
 
-# prepare images
+## prepare images
 git clone https://github.com/giofontana/openshift-psap.git
 yum -y install buildah skopeo podman
 
